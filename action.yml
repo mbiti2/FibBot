@@ -1,6 +1,14 @@
-# action.yml
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: "FibBot"
+description: "Extracts numbers from PRs and computes Fibonacci sequences"
+inputs:
+  enable_fib:
+    description: "Enable Fibonacci calculation"
+    required: true
+    default: "true"
+  max_threshold:
+    description: "Maximum Fibonacci number limit"
+    required: false
+    default: "18"
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: "docker"
+  image: "Dockerfile"
