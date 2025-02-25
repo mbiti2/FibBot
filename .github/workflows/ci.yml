@@ -12,6 +12,4 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Build and run Rust code
-        run: |
-         chmod 755 ./action.yml
-         ./action.yml
+        uses: /
