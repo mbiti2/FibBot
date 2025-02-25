@@ -17,4 +17,4 @@ jobs:
           cargo run
           echo "##[group]Action logs:"
           echo "##[info]Rust code output:"
-        #  cat target/debug/output.txt
+          cat target/debug/output.txt
