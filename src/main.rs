@@ -11,6 +11,8 @@ fn main() {
     } else if args.len() ==2  {
         let argument_2 = &args[1];
         println!("fiboot enabled succesfully with max_threshold: {}", argument_2);
+    } else {
+        println!("wrong number of arguments parsed")
     }
 }
 
