@@ -1,1 +1,20 @@
+name: Rust Hello World
 
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Build and run Rust code
+        run: |
+          cargo build
+          cargo run
+          echo "##[group]Action logs:"
+          echo "##[info]Rust code output:"
+        #  cat target/debug/output.txt
