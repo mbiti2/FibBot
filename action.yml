@@ -9,6 +9,12 @@ inputs:
     description: "Maximum Fibonacci number limit"
     required: false
     default: "18"
+outputs:
+  input:
+    description: "Print output to logs"
 runs:
   using: "docker"
   image: "Dockerfile"
+  args:
+    - ${{ input.enable_fib}}
+    - ${{ input.max_threshold}}

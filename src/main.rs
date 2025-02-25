@@ -1,26 +1,17 @@
-use std::io;
+use std::env::args;
 
 fn main() {
-    // println!("Fibonacci sequence!");
-    // println!("enter a number:");
+    let args: Vec<String> = args().skip(1).collect();
 
-    let mut num = String::new();
-    io::stdin()
-        .read_line(&mut num)
-        .expect("failed to read line");
-    let num: usize = num.trim().parse().expect("enter a number");
-
-    // println!("The fibonacci sequence of {num} is;");
-    
-    //  let results: usize = fibo(num).into();
-     
-    //  for int in 0..=num {
-    //      println! ( "fibonacci ({}) => {}", int, fibo(int));
-    //     //  println!("fibonacci ({num}) => {results}");
-    // }
-    let result = fib(num);
-
-    println!("the fibonacci num is {}",  result)
+    if args.is_empty(){
+        println!("no arguments supplied");
+        return;
+    } else if args.len() == 1 {
+        println!("Fibbot requires two parameters");
+    } else if args.len() ==2  {
+        let argument_2 = &args[1];
+        println!("fiboot enabled succesfully with max_threshold: {}", argument_2);
+    }
 }
 
 pub fn fib(n: usize) -> usize {
