@@ -7,7 +7,7 @@ inputs:
     default: "true"
   max_threshold:
     description: "Maximum Fibonacci number limit"
-    required: false
+    required: true
     default: "18"
 outputs:
   input:
