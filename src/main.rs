@@ -1,12 +1,14 @@
+use std::io;
+
 fn main() {
     // println!("Fibonacci sequence!");
     // println!("enter a number:");
 
-    // let mut num = String::new();
-    // io::stdin()
-    //     .read_line(&mut num)
-    //     .expect("failed to read line");
-    // let num: usize = num.trim().parse().expect("enter a number");
+    let mut num = String::new();
+    io::stdin()
+        .read_line(&mut num)
+        .expect("failed to read line");
+    let num: usize = num.trim().parse().expect("enter a number");
 
     // println!("The fibonacci sequence of {num} is;");
     
@@ -16,9 +18,9 @@ fn main() {
     //      println! ( "fibonacci ({}) => {}", int, fibo(int));
     //     //  println!("fibonacci ({num}) => {results}");
     // }
-    let result = fib(7);
+    let result = fib(num);
 
-    println!("the fibonacci of  is {}",  result)
+    println!("the fibonacci num is {}",  result)
 }
 
 pub fn fib(n: usize) -> usize {
