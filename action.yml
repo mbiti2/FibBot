@@ -8,7 +8,7 @@ inputs:
   max_threshold:
     description: "Maximum Fibonacci number limit (integer)"
     required: true
-    default: "18"
+    default: "100"
 outputs:
   input:
     description: "Print output to logs"
