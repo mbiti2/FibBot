@@ -16,4 +16,4 @@ RUN apk add libgcc
 
 COPY --from=build /app/target/release/fib-bot /app/fib-bot
 
-CMD [ "/app/fib-bot" ]
+ENTRYPOINT [ "/app/fib-bot" ]
