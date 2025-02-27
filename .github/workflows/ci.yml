@@ -15,5 +15,5 @@ jobs:
         id: input
         uses: ./
         with:
-          enable_fib: "false"
-          max_threshold: "50"
+          enable_fib: false
+          max_threshold: 50
