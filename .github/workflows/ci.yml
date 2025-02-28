@@ -28,7 +28,7 @@ jobs:
         with:
           enable_fib: true
           max_threshold: 50
-          pr_number: ${{ github.event.pull_request.number }}
+          request_number: ${{ github.event.pull_request.number }}
           github_token: ${{ secrets.GITHUB_TOKEN }} 
-          owner: ${{ github.actor }}
+          actor: ${{ github.actor }}
           repository:   ${{ github.repository }}
