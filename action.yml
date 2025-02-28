@@ -1,7 +1,6 @@
 name: "FibBot"
 description: "Extracts numbers from PRs and computes Fibonacci sequences"
-env:
-   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 inputs:
   enable_fib:
     description: "Enable Fibonacci calculation (true or false)"
@@ -20,7 +19,7 @@ runs:
   args:
     - ${{ inputs.enable_fib }}
     - ${{ inputs.max_threshold }}
-    - ${{ secrets.GITHUB_TOKEN }} 
-    - ${{ github.event.pull_request.number }}
-    - ${{ github.actor }}
-    - ${{ github.repository }}
+    #- ${{ secrets.GITHUB_TOKEN }} 
+    #- ${{ github.event.pull_request.number }}
+    #- ${{ github.actor }}
+    #- ${{ github.repository }}
