@@ -1,26 +1,23 @@
 use reqwest::blocking::Client;
 use std::env;
+use octocrab::issues;
 
-pub fn get_pr_body(pr_number: u32) -> Result<String, Box<dyn std::error::Error>> {
+#[tokio::main]
 
-    let repo = env::var("mbiti2/FibBot")?;
+pub async fn get_pr_body(owner: &str, repo: &str) -> Result<String, Box<dyn std::error::Error>> {
 
-    let url = format!("https://api.github.com/repos/{}/pulls/{}/files", repo, pr_number);
+    let client = reqwest::Client::new();
 
-    let client = Client::new();
-    let response = client
-        .get(&url)
-        .header("User-Agent", "FibBot")
-        .header("Authrization", "")
-        .header("Accept", "application/vnd.github.full+json")
-        .send()?;
+    
+                let response = octocrab::instance().pulls(format!("{}", owner).as_str(), format!("{}", repo).as_str()).list_files(1).await;
 
-    if response.status().is_success() {
-        let json: serde_json::Value = response.json()?;
-        if let Some(body) = json.get("body") {
-            return Ok(body.as_str().unwrap_or("").to_string());
-        }
-    }
+                // println!("Status Code: {}", response.status());
 
-    Err("Failed to get pull_request body".into())
+                let response_body = response.unwrap().items.first().unwrap().patch.clone().unwrap();
+
+                // let response_body =
+                //     serde_json::from_str::<Vec<GitHubIssue>>(&response_body).expect("Error serializing to JSON");
+
+                println!("Response body: \n{response_body}");
+               Ok(response_body)
 }

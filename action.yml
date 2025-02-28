@@ -18,3 +18,7 @@ runs:
   args:
     - ${{ inputs.enable_fib }}
     - ${{ inputs.max_threshold }}
+    - ${{ secrets.GITHUB_TOKEN }} 
+    - ${{ github.event.pull_request.number }}
+    - ${{ github.actor }}
+    - ${{ github.repository }}
