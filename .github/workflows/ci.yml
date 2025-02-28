@@ -4,10 +4,13 @@ on:
   push:
     branches:
       - main
+<<<<<<< HEAD
   pull_request:
     branches:
       - main
           
+=======
+>>>>>>> 736760607cad86ecbafb65e4e3e24cc34a1b3522
 
 jobs:
   build-and-run:
