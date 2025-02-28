@@ -1,99 +1,55 @@
-use std::env::args;
-
+use fib::fib;
 use get_pr::get_pr_body;
-
+use parse_numbers::extract_numbers;
+use post::post_comment;
+use std::env::{self, args};
+mod fib;
 mod get_pr;
 mod parse_numbers;
+mod post;
 
 fn main() {
-
-    get_pr_body(1);
-
-    let result = get_pr_body(0);
-    println!("{:?}", result);
     let args: Vec<String> = args().skip(1).collect();
-
     if args.is_empty() {
         println!("No arguments supplied.");
         return;
-    } else if args.len() != 2 {
-        println!("FibBot requires exactly two parameters.");
-        return;
+        // } else if args.len() != 2 {
+        //     println!("FibBot requires exactly two parameters.");
+        //     return;
     }
 
     let enable_fib = args[0].to_lowercase() == "true";
-    
-    let max_threshold: usize = match args[1].parse() {
-        Ok(value) => value,
-        Err(_) => {
-            println!("Invalid max_threshold value. It must be an integer.");
-            return;
+    let max_threshold = args[1].parse().expect("Failed parsing the max_threshold");
+    let owner = &args[4];
+    let pr_number = args[3].parse().expect("Failed to parse pr_number");
+    let token = &args[2];
+    let repo = &args[5];
+
+    let pr_content = get_pr_body(&owner, &repo);
+    // println!("{:?}", result);
+    let result: &str = &pr_content.unwrap();
+    let vec_of_nums = extract_numbers(result);
+
+    for num in vec_of_nums {
+        
+        if num > max_threshold{
+            continue;
+        } else {
+            let fib_numb = fib(num);
+                 
+            println!("It's fibonnacci number is : {}", fib_numb);
+            let result = post_comment(
+                fib_numb,
+                &owner.to_string(),
+                &repo.to_string(),
+                pr_number,
+                token.to_string(),
+            );
+        
+            println!("{:#?}", result);
+           
+            
         }
-    };
-
-    if enable_fib {
-        println!("FibBot enabled successfully with max_threshold: {}", max_threshold);
-        let fib_result = fib(max_threshold);
-        println!("Fibonacci result: {}", fib_result);
-    } else {
-        println!("Fibonacci calculation is disabled.");
     }
+
 }
-
-// Fibonacci function
-
-pub fn fib(n: usize) -> usize {
-    if n == 0 {
-        return 0;
-    }
-    if n == 1 {
-        return 1;
-    }
-
-    let mut prev = 0;
-    let mut curr = 1;
-
-    for _ in 2..=n {
-        let next = prev + curr;
-        prev = curr;
-        curr = next;
-    }
-
-    curr
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn test_fib_0() {
-        assert_eq!(fib(0), 0);
-    }
-
-    #[test]
-    fn test_fib_1() {
-        assert_eq!(fib(1), 1);
-    }
-
-    #[test]
-    fn test_fib_2() {
-        assert_eq!(fib(2), 1);
-    }
-
-    #[test]
-    fn test_fib_5() {
-        assert_eq!(fib(5), 5);
-    }
-
-    #[test]
-    fn test_fib_10() {
-        assert_eq!(fib(10), 55);
-    }
-
-    #[test]
-    fn test_fib_large() {
-        assert_eq!(fib(50), 12586269025); 
-    }
-}
-``
