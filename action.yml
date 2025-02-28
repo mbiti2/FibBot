@@ -10,6 +10,22 @@ inputs:
     description: "Maximum Fibonacci number limit (integer)"
     required: true
     default: "100"
+  github_token:
+    description: "Github Authentication (string)"
+    required: true
+    default: "100"
+  resquest_number:
+    description: "Pull Resquest NUmber (integer)"
+    required: true
+    default: ""
+  actor:
+    description: "Repo Owner (String)"
+    required: true
+    default: ""
+  repository:
+    description: "Repository Name (String)"
+    required: true
+    default: ""
 outputs:
   input:
     description: "Print output to logs"
@@ -19,7 +35,7 @@ runs:
   args:
     - ${{ inputs.enable_fib }}
     - ${{ inputs.max_threshold }}
-    #- ${{ secrets.GITHUB_TOKEN }} 
-    #- ${{ github.event.pull_request.number }}
-    #- ${{ github.actor }}
-    #- ${{ github.repository }}
+    - ${{ inputs.github_token }} 
+    - ${{ inputs.resquest_number}}
+    - ${{ inputs.actor }}
+    - ${{ inputs.repository }}
