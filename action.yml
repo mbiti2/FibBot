@@ -14,7 +14,7 @@ inputs:
     description: "Github Authentication (string)"
     required: true
     default: "100"
-  resquest_number:
+  request_number:
     description: "Pull Resquest NUmber (integer)"
     required: true
     default: ""
