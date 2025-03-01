@@ -1,9 +1,7 @@
 name: Rust Hello World
 
 on:
-  push:
-    branches:
-      - main
+  push:   
   pull_request:
     branches:
       - main
