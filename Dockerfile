@@ -5,6 +5,7 @@ WORKDIR /app
 COPY . .
 
 RUN apk add musl-dev
+RUN cargo build --release
 
 RUN docker build --no-cache --progress=plain .
 
