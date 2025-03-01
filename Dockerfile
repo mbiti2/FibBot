@@ -4,7 +4,9 @@ WORKDIR /app
 
 COPY . .
 
-RUN apk add --no-cache openssl-dev musl-dev pkgconf
+RUN apk add --no-cache openssl-dev musl-dev pkgconf 
+RUN apk add --no-cache build-base clang lld
+
 
 RUN cargo build --release
 
