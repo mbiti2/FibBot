@@ -9,7 +9,7 @@ pub async fn get_pr_body(owner: &str, repo: &str) -> Result<String, Box<dyn std:
     let client = reqwest::Client::new();
 
     
-                let response = octocrab::instance().pulls(format!("{}", owner).as_str(), "FibBot").list_files(1).await;
+                let response = octocrab::instance().pulls(format!("{}", owner).as_str(), "{}", repo).list_files(1).await;
 
                 // println!("Status Code: {}", response.status());
 
