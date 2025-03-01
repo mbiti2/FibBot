@@ -9,15 +9,14 @@ pub async fn get_pr_body(owner: &str, repo: &str) -> Result<String, Box<dyn std:
     let client = reqwest::Client::new();
 
     
-                let response = octocrab::instance().pulls(format!("{}", owner).as_str(), "{}", repo).list_files(1).await;
+     let response = octocrab::instance().pulls(format!("{}", owner).as_str(), format!("{}", repo).as_str()).list_files(1).await;
+      // println!("Status Code: {}", response.status());
 
-                // println!("Status Code: {}", response.status());
+     let response_body = response.unwrap().items.first().unwrap().patch.clone().unwrap();
 
-                let response_body = response.unwrap().items.first().unwrap().patch.clone().unwrap();
+      // let response_body =
+     //     serde_json::from_str::<Vec<GitHubIssue>>(&response_body).expect("Error serializing to JSON");
 
-                // let response_body =
-                //     serde_json::from_str::<Vec<GitHubIssue>>(&response_body).expect("Error serializing to JSON");
-
-                println!("Response body: \n{response_body}");
-               Ok(response_body)
+     println!("Response body: \n{response_body}");
+     Ok(response_body)
 }
