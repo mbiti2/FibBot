@@ -4,14 +4,15 @@ use reqwest::{header, Client, Error, Response, Url};
 use serde::Serialize;
 #[derive(Serialize)]
 struct Comment {
-    body: Vec<String>,
+    body: String,
 }
 
 #[tokio::main]
-pub async fn post_comment( owner: &str, repo: &str, pr_num: u32, token: String, comments: Vec<String>) -> Result<Vec<String>, Error> { 
+pub async fn post_comment( owner: &str, repo: &str, pr_num: u32, token: String, comments: String) -> Result<String, Error> { 
     // https://api.github.com/repos/FibBot/issues/1/comments
 
     let client = Client::new();
+
 
 
     let comment = Comment { body: comments };
