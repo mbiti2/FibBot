@@ -3,6 +3,7 @@ use get_pr::get_pr_body;
 use parse_numbers::extract_numbers;
 use post::post_comment;
 use std::env::{self, args};
+
 mod fib;
 mod get_pr;
 mod parse_numbers;
@@ -32,27 +33,26 @@ fn main() {
     // println!("{:?}", result);
     let result: &str = &pr_content.unwrap();
     let vec_of_nums = extract_numbers(result);
+    let mut comments = Vec::new();
 
     for num in vec_of_nums {
-        
-        if num > max_threshold{
+        if num > max_threshold {
             continue;
         } else {
             let fib_numb = fib(num);
-                 
-            println!("It's fibonnacci number is : {}", fib_numb);
-            let result = post_comment(
-                fib_numb,
-                &owner.to_string(),
-                &repo.to_string(),
-                pr_number,
-                token.to_string(),
-            );
-        
-            println!("{:#?}", result);
-           
+            let mut comment = format!("The fibonnaci number is : {}", fib_numb);
+
+            comments.push(comment);
+
             
+            println!("{:#?}", result);
         }
     }
-
+    let result = post_comment(
+        &owner.to_string(),
+        &repo.to_string(),
+        pr_number,
+        token.to_string(),
+        comments,
+    );
 }
