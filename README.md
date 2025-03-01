@@ -13,9 +13,23 @@ FibBot is a GitHub Action that scans pull request descriptions for numbers, calc
 ##### Add this to yours workflow file
 ```  steps:
     - name: Compute Fibbot
-      uses: @marcjazz/ticket-assistant@v1
+      uses: mbiti2/FibBot@v1
       with: 
-        
+        enable_fib: true
+          max_threshold: 150
+          request_number: ${{ github.event.pull_request.number }}
+          github_token: ${{ secrets.GITHUB_TOKEN }} 
+          actor: ${{ github.actor }}
+          repository:   ${{ github.repository }}
 ```
+####### Enable workflow permissions
+- Go to the repository setting
+- Click on Actions
+- Click on general
+- Go to Workflow permissions and enable Read and write permissions 
+### Testing
+- Create a pull request and monitor the logs to see the processes that are running
+- When all actions pass go to pull request comment section and see results
+  
 
 
