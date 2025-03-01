@@ -13,7 +13,7 @@ FibBot is a GitHub Action that scans pull request descriptions for numbers, calc
 ##### Add this to yours workflow file
 ```  steps:
     - name: Compute Fibbot
-      uses: mbiti2/FibBot@v1
+      uses: mbiti2/fib-bot@main
       with: 
         enable_fib: true
           max_threshold: 150
