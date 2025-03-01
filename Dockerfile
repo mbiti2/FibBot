@@ -4,10 +4,11 @@ WORKDIR /app
 
 COPY . .
 
-RUN apk add musl-dev
+RUN apk add --no-cache openssl-dev musl-dev pkgconf
+
 RUN cargo build --release
 
-RUN docker build --no-cache --progress=plain .
+# RUN docker build --no-cache --progress=plain .
 
 
 FROM alpine:latest
