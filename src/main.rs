@@ -10,6 +10,7 @@ mod post;
 
 fn main() {
     let args: Vec<String> = args().skip(1).collect();
+    println!("{:?}", args);
     if args.is_empty() {
         println!("No arguments supplied.");
         return;
