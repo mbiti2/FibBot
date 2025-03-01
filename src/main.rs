@@ -25,6 +25,8 @@ fn main() {
     let pr_number = args[3].parse().expect("Failed to parse pr_number");
     let token = &args[2];
     let repo = &args[5];
+    let repo = repo.split("/").collect::<Vec<&str>>();
+    let repo = repo[1];
 
     let pr_content = get_pr_body(&owner, &repo);
     // println!("{:?}", result);
