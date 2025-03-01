@@ -20,7 +20,7 @@ pub async fn post_comment(fib_num: u128, owner: &str, repo: &str, pr_num: u32, t
     let response = client
     .post(format!("https://api.github.com/repos/{owner}/FibBot/issues/{pr_num}/comments" ))
   .header("Accept", "application/vnd.github+json")
-   .header("Authorization", format!("{}", token).as_str()) 
+   .header("Authorization", format!("Bearer {}", token).as_str()) 
    .header("X-GitHub-Api-Version", "2022-11-28") 
    .header("User-Agent", format!("{}", owner).as_str())
     .json(&comment)
