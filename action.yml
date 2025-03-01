@@ -17,7 +17,7 @@ inputs:
   request_number:
     description: "Pull Resquest NUmber (integer)"
     required: true
-    default: ""
+    default: "1"
   actor:
     description: "Repo Owner (String)"
     required: true
