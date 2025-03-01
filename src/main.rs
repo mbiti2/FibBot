@@ -33,7 +33,7 @@ fn main() {
     // println!("{:?}", result);
     let result: &str = &pr_content.unwrap();
     let vec_of_nums = extract_numbers(result);
-    let mut comments = Vec::new();
+    let mut comments = String::new();
 
     for num in vec_of_nums {
         if num > max_threshold {
@@ -42,7 +42,7 @@ fn main() {
             let fib_numb = fib(num);
             let mut comment = format!("The fibonnaci number is : {}", fib_numb);
 
-            comments.push(comment);
+            comments.push_str(&comment);
 
             
             println!("{:#?}", result);
