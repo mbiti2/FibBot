@@ -36,6 +36,6 @@ runs:
     - ${{ inputs.enable_fib }}
     - ${{ inputs.max_threshold }}
     - ${{ inputs.github_token }} 
-    - ${{ inputs.resquest_number}}
+    - ${{ inputs.request_number}}
     - ${{ inputs.actor }}
     - ${{ inputs.repository }}
