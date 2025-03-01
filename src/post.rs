@@ -22,7 +22,7 @@ pub async fn post_comment(fib_num: u128, owner: &str, repo: &str, pr_num: u32, t
   .header("Accept", "application/vnd.github+json")
    .header("Authorization", format!("{}", token).as_str()) 
    .header("X-GitHub-Api-Version", "2022-11-28") 
-   .header("User-Agent", format!("{}", owner))
+   .header("User-Agent", format!("{}", owner).as_str())
     .json(&comment)
     .send()
     .await?;
