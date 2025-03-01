@@ -40,7 +40,7 @@ fn main() {
             continue;
         } else {
             let fib_numb = fib(num);
-            let mut comment = format!("The fibonnaci number is : {}", fib_numb);
+             let comment = format!("The fibonnaci number of {} is  : {}", num,fib_numb);
 
             comments.push_str(format!("{}\n", comment).as_str());
 
