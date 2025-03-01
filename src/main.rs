@@ -42,9 +42,8 @@ fn main() {
             let fib_numb = fib(num);
             let mut comment = format!("The fibonnaci number is : {}", fib_numb);
 
-            comments.push_str(&comment);
+            comments.push_str(format!("{}\n", comment).as_str());
 
-            
             println!("{:#?}", result);
         }
     }
