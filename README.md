@@ -9,7 +9,7 @@ FibBot is a GitHub Action that scans pull request descriptions for numbers, calc
 - FibBot scans the pull request description for numbers.
 - It calculates the Fibonacci sequence for each detected number.
 - It posts a comment on the PR with the results.
-  ### HOw To Use This Action
+  ### How To Use This Action
 ##### Add this to yours workflow file
 ```  steps:
     - name: Compute Fibbot
